@@ -15,11 +15,11 @@ add_library(tlm2c STATIC
 )
 add_library(Tlm2c::tlm2c ALIAS tlm2c)
 
-target_compile_options(tlm2c PUBLIC -Wall -Werror -pedantic -O2)
+target_compile_options(tlm2c PRIVATE -Wall -Werror -pedantic -O2)
 if(NOT MINGW)
-    target_compile_options(tlm2c PUBLIC -fPIC)
+    target_compile_options(tlm2c PRIVATE -fPIC)
 endif()
-target_compile_options(tlm2c PUBLIC $<$<CONFIG:Debug>:-g>)
+target_compile_options(tlm2c PRIVATE $<$<CONFIG:Debug>:-g>)
 
 target_include_directories(tlm2c PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
